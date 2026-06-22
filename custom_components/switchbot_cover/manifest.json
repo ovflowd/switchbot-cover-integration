@@ -1,0 +1,10 @@
+{
+  "domain": "switchbot_cover",
+  "name": "SwitchBot Cover",
+  "codeowners": ["@ovflowd"],
+  "config_flow": true,
+  "documentation": "https://github.com/ovflowd/switchbot-cover-integration",
+  "iot_class": "local_push",
+  "issue_tracker": "https://github.com/ovflowd/switchbot-cover-integration/issues",
+  "version": "1.0.0"
+}

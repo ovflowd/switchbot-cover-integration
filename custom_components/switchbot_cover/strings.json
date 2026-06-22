@@ -1,0 +1,37 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Add SwitchBot Cover",
+        "description": "Configure a roller shutter controlled by two SwitchBot switches (up/down) with an optional contact sensor for state feedback.",
+        "data": {
+          "name": "Cover name",
+          "up_switch": "Up switch",
+          "down_switch": "Down switch",
+          "sensor": "Contact sensor (optional)",
+          "movement_timeout": "Movement timeout"
+        },
+        "data_description": {
+          "up_switch": "SwitchBot switch entity that opens the shutter",
+          "down_switch": "SwitchBot switch entity that closes the shutter",
+          "sensor": "Binary sensor that detects shutter position (on = open, off = closed)",
+          "movement_timeout": "Seconds to wait for movement to complete before releasing lock"
+        }
+      }
+    },
+    "error": {
+      "same_switch": "Up and down switches must be different entities"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "SwitchBot Cover Options",
+        "data": {
+          "sensor": "Contact sensor (optional)",
+          "movement_timeout": "Movement timeout"
+        }
+      }
+    }
+  }
+}
