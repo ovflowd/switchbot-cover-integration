@@ -109,7 +109,9 @@ class SwitchBotCoverEntity(CoverEntity):
         self.async_write_ha_state()
 
     def _update_from_sensor(self, state: str) -> None:
-        is_open = state == STATE_ON
+        # Contact sensor is mounted at the top: magnet aligns (off/closed)
+        # when shutter is rolled up (open). Inverted from naive reading.
+        is_open = state != STATE_ON
         self._is_closed = not is_open
         self._position = 100 if is_open else 0
 
@@ -129,7 +131,8 @@ class SwitchBotCoverEntity(CoverEntity):
             )
 
             if self._sensor:
-                target = STATE_ON if direction == "up" else "off"
+                # Inverted: opening (up) → sensor goes off (closed), closing (down) → sensor goes on (open)
+                target = "off" if direction == "up" else STATE_ON
                 try:
                     await self._wait_for_sensor(target)
                 except asyncio.TimeoutError:
